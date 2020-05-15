@@ -1,0 +1,13 @@
+.component {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15vh;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 22px;
+}
+.friends {
+  width: 30vw;
+}
