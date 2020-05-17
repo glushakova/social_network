@@ -1,0 +1,36 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.picture {
+  height: 20rem;
+  border-radius: 50%;
+}
+
+.information {
+  display: flex;
+  width: 25vw;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 470px;
+}
+
+.content {
+  text-align: justify;
+}
+
+@media (max-width: 992px) {
+  .information {
+    width: 80vw;
+    height: auto;
+  }
+
+  .picture {
+    height: auto;
+    width: 60vw;
+  }
+}

@@ -1,0 +1,10 @@
+.page-users {
+  padding-top: 10vh;
+  width: 50%;
+}
+
+@media (max-width: 576px) {
+  .page-users {
+    width: auto;
+  }
+}
