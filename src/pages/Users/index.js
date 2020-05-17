@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './style.css';
-import { Loader, Card } from '../../components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import { Loader, Card } from '../../components';
 import { ROUTES } from '../../const';
+import './style.css';
 
 const Users = () => {
   const [users, usersChange] = useState([]);
-  const [loading, loadingChange] = useState(false);
+  const [loading, loadingChange] = useState(true);
   const [error, errorChange] = useState('');
 
   useEffect(() => {
@@ -31,23 +32,23 @@ const Users = () => {
     return <div>{`Ошибка: ${error}`}</div>;
   }
 
+  if (loading && !users) {
+    return <Loader />;
+  }
+
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="page">
-          <div className="page-users">
-            {users.map((element) => {
-              return (
-                <Link key={element._id} to={`${ROUTES.USERS}/${element.index}`}>
-                  <Card name={element.name} picture={element.picture} />
-                </Link>
-              );
-            })}
-          </div>
+      <div className="page">
+        <div className="page-users">
+          {users.map((element) => {
+            return (
+              <Link key={element._id} to={`${ROUTES.USERS}/${element.index}`}>
+                <Card name={element.name} picture={element.picture} />
+              </Link>
+            );
+          })}
         </div>
-      )}
+      </div>
     </>
   );
 };

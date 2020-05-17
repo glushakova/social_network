@@ -1,6 +1,7 @@
 import React from 'react';
-import './style.css';
 import PropTypes from 'prop-types';
+
+import './style.css';
 
 const Card = ({ name, picture }) => {
   return (
@@ -17,6 +18,10 @@ const Card = ({ name, picture }) => {
 Card.propTypes = {
   name: PropTypes.object,
   picture: PropTypes.node,
+  optionalObjectWithShape: PropTypes.shape({
+    first: PropTypes.string,
+    last: PropTypes.string,
+  }),
 };
 
 export { Card };

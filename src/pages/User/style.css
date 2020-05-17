@@ -11,3 +11,14 @@
 .friends {
   width: 30vw;
 }
+
+@media (max-width: 992px) {
+  .component {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .friends {
+    width: 80vw;
+  }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import './style.css';
 import PropTypes from 'prop-types';
+
+import './style.css';
 
 const Profile = ({ user }) => {
   return (
@@ -31,6 +32,17 @@ const Profile = ({ user }) => {
 
 Profile.propTypes = {
   user: PropTypes.object,
+  optionalObjectWithShape: PropTypes.shape({
+    picture: PropTypes.node,
+    last: PropTypes.string,
+    first: PropTypes.string,
+    isActive: PropTypes.bool,
+    age: PropTypes.number,
+    about: PropTypes.string,
+    address: PropTypes.string,
+    phone: PropTypes.string,
+    email: PropTypes.string,
+  }),
 };
 
 export { Profile };

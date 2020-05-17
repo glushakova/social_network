@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { ROUTES } from '../../const';
 import './style.css';
 
@@ -12,4 +13,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export { NavBar };

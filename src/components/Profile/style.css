@@ -22,3 +22,15 @@
 .content {
   text-align: justify;
 }
+
+@media (max-width: 992px) {
+  .information {
+    width: 80vw;
+    height: auto;
+  }
+
+  .picture {
+    height: auto;
+    width: 60vw;
+  }
+}
