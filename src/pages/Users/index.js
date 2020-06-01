@@ -1,32 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
+import { getUsers } from '../../actions';
 import { Loader, Card } from '../../components';
 import { ROUTES } from '../../const';
 import './style.css';
 
 const Users = () => {
-  const [users, usersChange] = useState([]);
-  const [loading, loadingChange] = useState(true);
-  const [error, errorChange] = useState('');
+  const users = useSelector((state) => state.users.users);
+  const loading = useSelector((state) => state.users.loading);
+  const error = useSelector((state) => state.users.err);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    loadingChange(true);
-    const getUser = async () => {
-      try {
-        const response = await axios.get(
-          'https://serverless-backend-ky9b8rmuq.now.sh/api/users'
-        );
-        usersChange(response.data);
-        loadingChange(false);
-      } catch (error) {
-        loadingChange(false);
-        errorChange(error.message);
-      }
-    };
-    getUser();
-  }, []);
+    dispatch(getUsers());
+  }, [dispatch]);
 
   if (!users && !loading) {
     return <div>{`Ошибка: ${error}`}</div>;
@@ -40,7 +30,7 @@ const Users = () => {
     <>
       <div className="page">
         <div className="page-users">
-          {users.map((element) => {
+          {users?.map((element) => {
             return (
               <Link key={element._id} to={`${ROUTES.USERS}/${element.index}`}>
                 <Card name={element.name} picture={element.picture} />

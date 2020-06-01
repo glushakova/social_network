@@ -1,17 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './style.css';
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const user = useSelector((state) => state.user.user);
   return (
     <>
       <div className="user">
         <img src={user.picture} className="picture" alt="user" />
         <div>
           <div className="bold">
-            <div>{user.name.first}</div>
-            <div>{user.name.last}</div>
+            <div>{user.name?.first}</div>
+            <div>{user.name?.last}</div>
           </div>
           <div>{user.isActive ? 'online' : 'offline'}</div>
         </div>
