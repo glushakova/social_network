@@ -29,3 +29,7 @@ export const getUsers = () => {
     }
   };
 };
+
+export const sortUsers = () => ({
+  type: ACTIONST_TYPE.SORT_USERS,
+});

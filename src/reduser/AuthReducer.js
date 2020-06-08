@@ -46,6 +46,7 @@ export default (state = initialState, action) => {
       };
     }
     case ACTIONST_TYPE.SIGN_OUT: {
+      localStorage.removeItem('token');
       return {
         ...initialState,
       };

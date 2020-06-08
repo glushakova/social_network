@@ -28,6 +28,21 @@ export default (state = initialState, action) => {
         err: action.payload,
       };
     }
+    case ACTIONST_TYPE.SORT_USERS: {
+      const usersSort = [...state.users];
+      return {
+        ...state,
+        users: usersSort.sort((a, b) => {
+          if (a.name.first > b.name.first) {
+            return 1;
+          }
+          if (a.name.first < b.name.first) {
+            return -1;
+          }
+          return 0;
+        }),
+      };
+    }
     default:
       return state;
   }

@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 
 import { onChangePhone, onChangePassword, signIn } from '../../actions';
 import { Loader } from '../../components';
-// import { ROUTES } from '../const';
 import './style.css';
 
 class SignInPage extends Component {
   onSignIn = () => {
-    this.props.signIn(this.props.phone, this.props.password, this.props.history);
+    this.props.signIn(
+      this.props.phone,
+      this.props.password,
+      this.props.history
+    );
   };
 
   render() {
@@ -58,8 +61,6 @@ const actionsCreator = {
   signIn,
 };
 
-//  window.location = `${ROUTES.USERS}/${user.index}`;
-
 export const SignInPageConnect = connect(
   mapStateToProps,
   actionsCreator
@@ -74,5 +75,5 @@ SignInPage.propTypes = {
   onChangePhone: PropTypes.func,
   onChangePassword: PropTypes.func,
   signIn: PropTypes.func,
-  history: PropTypes.func,
+  history: PropTypes.object,
 };

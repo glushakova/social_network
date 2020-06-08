@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getUsers } from '../../actions';
+import { getUsers, sortUsers } from '../../actions';
 import { Loader, Card } from '../../components';
 import { ROUTES } from '../../const';
 import './style.css';
@@ -30,6 +30,7 @@ const Users = () => {
     <>
       <div className="page">
         <div className="page-users">
+          <button onClick={() => dispatch(sortUsers())}>Sort by name</button>
           {users?.map((element) => {
             return (
               <Link key={element._id} to={`${ROUTES.USERS}/${element.index}`}>

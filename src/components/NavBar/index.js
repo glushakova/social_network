@@ -16,7 +16,6 @@ const NavBar = () => {
   const signOutOnButton = () => {
     dispathch(signOut());
     toSignIn();
-    localStorage.removeItem('token');
   };
   const toSignIn = () => {
     history.push('/sign-in');
@@ -26,9 +25,11 @@ const NavBar = () => {
     <nav className="navbar">
       <Link to={ROUTES.MAIN}>Main</Link>
       <Link to={ROUTES.USERS}>Users</Link>
-      {user || token ? (
+      {token ? (
         <>
-          <Card name={user?.name} picture={user?.picture} small />
+          <Link to={`${ROUTES.USERS}/${user?.index}`}>
+            <Card name={user?.name} picture={user?.picture} small />
+          </Link>
           <button className="button" onClick={() => signOutOnButton()}>
             Sign Out
           </button>
